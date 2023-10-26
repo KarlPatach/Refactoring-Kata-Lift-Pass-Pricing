@@ -27,13 +27,13 @@ public class PricesTest {
     }
 
     @Test
-    public void doesSomething() {
+    void doesSomething() {
         JsonPath response = RestAssured.
             given().
                 port(4567).
             when().
                 // construct some proper url parameters
-                get("/prices").
+                get("/prices?type=1jour&cost=35").
             then().
                 assertThat().
                     statusCode(200).
@@ -41,7 +41,7 @@ public class PricesTest {
                     contentType("application/json").
             extract().jsonPath();
 
-        assertEquals("putSomehtingHere", response.get("putSomehtingHere"));
+        assertEquals(35, response.getInt("cost"));
     }
 
 }
