@@ -105,14 +105,14 @@ public class Prices {
                                 }
                             }
                         } else {
-                            if (age != null && age >= 6) {
+                            if (age == null) {
+                                return "{ \"cost\": 0}";
+                            } else {
                                 if (age > 64) {
                                     return "{ \"cost\": " + (int) Math.ceil(result.getInt("cost") * .4) + "}";
                                 } else {
                                     return "{ \"cost\": " + result.getInt("cost") + "}";
                                 }
-                            } else {
-                                return "{ \"cost\": 0}";
                             }
                         }
                     }
